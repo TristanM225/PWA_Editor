@@ -31,7 +31,7 @@ export const putDb = async (id, content) => {
 
 
 // yanked from UCSD coding folder 24-Stu_IndexedDB-CRUD
-export const getAllDb = async () => {
+export const getDb = async () => {
   console.log('GET all from the database');
 
   // Create a connection to the database database and version we want to use.
