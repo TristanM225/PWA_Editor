@@ -4,7 +4,7 @@ const path = require('path');
 const { InjectManifest } = require('workbox-webpack-plugin');
 
 //  Add and configure workbox plugins for a service worker and manifest file. added plug in (need to check if configed correctly)
-const WorkboxPlugin = require('workbox-webpack-plugin');
+// const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = () => {
   return {
@@ -20,31 +20,30 @@ module.exports = () => {
     plugins: [
       new HtmlWebpackPlugin({
         template: './index.html',
-        title: 'Webpack Plugin'
+        title: 'JATE'
       }),
       // added in workbox plugin 8/29 and manifest file?
-      new WorkboxPlugin.GenerateSW(),
       new InjectManifest({
-        swSrc: '.src/src-sw.js',
-        swDest: 'service-worker.js',
+        swSrc: './src-sw.js',
+        swDest: 'src.sw.js',
       }),
       //NOT SURE IF THIS IS IMPLEMENTED PROPERLY YET.
-      // new WebpackPwaManifest({
-      //   name: 'TODOs',
-      //   short_name: 'TODOs',
-      //   description: 'Keep track of important tasks!',
-      //   background_color: '#7eb4e2',
-      //   theme_color: '#7eb4e2',
-      //   start_url: './',
-      //   publicPath: './',
-      //   icons: [
-      //     {
-      //       src: path.resolve('assets/images/logo.png'),
-      //       sizes: [96, 128, 192, 256, 384, 512],
-      //       destination: path.join('assets', 'icons'),
-      //     },
-      //   ],
-      // }),
+      new WebpackPwaManifest({
+        name: 'JATE',
+        short_name: 'JATE',
+        description: 'Just Another Text Editor!',
+        background_color: '#7eb4e2',
+        theme_color: '#7eb4e2',
+        start_url: './',
+        publicPath: './',
+        icons: [
+          {
+            src: path.resolve('src/images/logo.png'),
+            sizes: [96, 128, 192, 256, 384, 512],
+            destination: path.join('assets', 'icons'),
+          },
+        ],
+      }),
       
     ],
 //  Add CSS loaders and babel to webpack. SHOULD BE COMPLETED NOW 8/29
