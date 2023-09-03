@@ -1,6 +1,6 @@
+// js/database.js
 import { openDB } from 'idb';
 
-const jateDB = jate;
 
 const initdb = async () =>
   openDB('jate', 1, {
@@ -18,12 +18,12 @@ const initdb = async () =>
 //INSTRUCTOR 23 See for Example or mini project
 
 // yanked from UCSD coding folder 24-Stu_IndexedDB-CRUD
-export const putDb = async (id, content) => {
+export const putDb = async ( content) => {
   console.log('PUT to the database');
   const jateDb = await openDB('jate', 1);
   const tx = jateDb.transaction('jate', 'readwrite');
   const store = tx.objectStore('jate');
-  const request = store.put({ id: id, todo: content });
+  const request = store.put({ id: 1, value: content });
   const result = await request;
   console.log('Data saved to the database', result);
 };
@@ -44,12 +44,12 @@ export const getDb = async () => {
   const store = tx.objectStore('jate');
 
   // Use the .getAll() method to get all data in the database.
-  const request = store.getAll();
+  const request = store.getAll(1);
 
    // Get confirmation of the request.
   const result = await request;
   console.log('result.value', result);
-  return result;
+  return result.value;
 };
 
 initdb();
